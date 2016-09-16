@@ -6,6 +6,7 @@ import numpy as np
 RPS = ("rock", "paper", "scissors")
 
 
+# Assosisere trekk med et tall. Hvis det er skrevet inn feil, vil det bli kastet en feilmelding
 def move_to_number(move):
     if move == "rock":
         return 0
@@ -46,22 +47,29 @@ class RandomPlayer(Player):
         else:
             return "scissors"
 
+    # Mottar resultat, teller opp poeng og legger det til i statestikken.
+    # Stat er vinn prosenten
     def receive_result(self, result):
         self.points += result
         number_of_games = float(len(self.stat) + 1)
         self.stat.append(self.points/number_of_games)
 
+    # Returnerer hvilken spiller det er som string
     def __str__(self):
         return "Random Player"
 
+
 class SeqentialPlayer(Player):
 
+    # Initialiserer klassen med konstruktoren.
+    # Har teller med hvor mange spill som har blitt spilt
     def __init__(self):
         super(SeqentialPlayer, self).__init__()
         self.number_of_games = 0
 
+    # Velger et nytt trekk, gaar i rekkefolge, saa blir rock, paper, scissors
     def choose_action(self):
-        #Tar modulo for å hele tiden ta neste i rekken av mulige valg.
+        # Tar modulo for aa hele tiden ta neste i rekken av mulige valg.
         action = self.number_of_games % 3
         self.number_of_games += 1
         if action == 0:
@@ -71,16 +79,20 @@ class SeqentialPlayer(Player):
         else:
             return "scissors"
 
+    # Mottar resultat, teller opp poeng og legger det til i statestikken.
+    # Stat er vinn prosenten
     def receive_result(self, result):
         self.points += result
         number_of_games = float(len(self.stat) + 1)
         self.stat.append(self.points/number_of_games)
 
+    # Returnerer hvilken spiller det er som string
     def __str__(self):
         return "Sequential Player"
 
 
 class MostRegular(Player):
+
 
     def __init__(self):
         super(MostRegular, self).__init__()
@@ -88,7 +100,8 @@ class MostRegular(Player):
         #Er en String
         self.action = None
 
-    # Finne indexen til det trekket som er spilt mest i forhold til listen RPS
+
+    # Finner det mest brukte trekket
     def highest_action(self):
         highest = 0
         index_of_highest = 0
@@ -98,11 +111,13 @@ class MostRegular(Player):
                 index_of_highest = i
         return index_of_highest
 
+    # Velger en trekk som vinner mot det motstanderen bruker oftest
     def choose_action(self):
         sign = self.highest_action()
         self.action = RPS[sign]
         return self.action
 
+    # Bestemmer hva som er det beste trekket
     def counter_for_enemy(self, result):
         # Uavgjort
         if result == 1:
@@ -123,6 +138,7 @@ class MostRegular(Player):
             else:
                 return "rock"
 
+    # Mottar resultat, legger til motstanderens siste trekk og regner ut vinn prosenten
     def receive_result(self, result):
         self.points += result
         number_of_games = float(len(self.stat) + 1)
@@ -130,12 +146,14 @@ class MostRegular(Player):
         opponents_last_choise = self.counter_for_enemy(result)
         self.enemy_actions[move_to_number(opponents_last_choise)] += 1
 
+    # Returnerer hvilken spiller det er som string
     def __str__(self):
         return "MostRegular"
 
 
 class HistorianPlayer(Player):
 
+    # Konstruktoren,
     def __init__(self, remember):
         super(HistorianPlayer, self).__init__()
         self.remember = remember
@@ -147,7 +165,7 @@ class HistorianPlayer(Player):
         enemy_last_action = self.enemy_action[-self.remember:len(self.enemy_action)]
 
         counter = 0
-        # Bibliotek
+        # Bibliotek som teller opp hvor mange ganger de forskjellige trekkene har blitt brukt
         number_of_sign = {}
         number_after_sequence = []
 
@@ -169,6 +187,7 @@ class HistorianPlayer(Player):
             except:
                 number_of_sign[sign] = 1
 
+        # Finner det trekket som er brukt mest
         for key in number_of_sign:
             if number_of_sign[key] > highest:
                 highest = number_of_sign[key]
@@ -177,6 +196,7 @@ class HistorianPlayer(Player):
 
         return self.action
 
+    # Velger trekket som er best mot det som blir brukt flest ganger
     def counter_for_enemy(self, result):
         # Uavgjort
         if result == 1:
@@ -197,6 +217,7 @@ class HistorianPlayer(Player):
             else:
                 return "rock"
 
+    # Mottar resultatet
     def receive_result(self, result):
         self.points += result
         number_of_games = float(len(self.stat) + 1)
@@ -204,6 +225,7 @@ class HistorianPlayer(Player):
         enemy_last_action = self.counter_for_enemy(result)
         self.enemy_action.append(enemy_last_action)
 
+    # Returnerer hvilken spiller det er som string
     def __str__(self):
         return "Historian"
 
@@ -213,7 +235,7 @@ class Action:
     def __init__(self, action):
         self.action = action
 
-    # Bestemmer hvem som vinner
+    # Bestemmer hva som slaar hva.
     def __gt__(self, other):
         if (self.action == "rock" and other.action == "scissors" or
             self.action == "scissors" and other.action == "paper" or
@@ -228,6 +250,7 @@ class Action:
 
 class SingelPlayerGame:
     #Spiller et spill
+
 
     def __init__(self, player1, player2):
         self.player1 = player1
@@ -261,6 +284,7 @@ class SingelPlayerGame:
             self.winner = self.player2
             self.looser = self.player1
 
+    # Spiller et game
     def play_game(self):
         self.find_winner()
         if (self.winner == None):
@@ -268,6 +292,7 @@ class SingelPlayerGame:
         else:
             self.send_results(self.winner, self.looser)
 
+    # Returnerer informasjon om spiller, hvem som vant osv
     def __str__(self):
         if(self.winner == None):
             result = "Tie \n"
@@ -277,6 +302,7 @@ class SingelPlayerGame:
         return "%s: " % self.player1 + self.action1 + "\n%s: " % self.player2 + self.action2 + "\n" +  result
 
 
+# Spiller flere spill, kan spille n-ganger
 class MultipleGames:
     def __init__(self, player1, player2, number_of_games):
         self.player1 = player1
@@ -293,8 +319,8 @@ class MultipleGames:
         for i in range(self.number_of_games):
             self.play_single_game()
 
-        print("%s won " % self.player1 + str(self.player1.points/self.number_of_games*100) + "% of the games")
-        print("%s won " % self.player2 + str(self.player2.points/self.number_of_games*100) + "% of the games")
+        print("%s won " % self.player1 + str(round((self.player1.points/self.number_of_games*100), 2)) + "% of the games")
+        print("%s won " % self.player2 + str(round((self.player2.points/self.number_of_games*100), 2)) + "% of the games")
 
 
         if self.player1.points > self.player2.points:
@@ -306,6 +332,7 @@ class MultipleGames:
         else:
             print("It's a tie")
 
+    # Lager en graf over hvor ofte man vinner basert paa antall spill og hvem som spiller.
     def print_results(self, player):
         x = np.arange(0,self.number_of_games,1)
         plt.plot(x,player.stat)
@@ -320,7 +347,8 @@ p2 = SeqentialPlayer()
 p3 = MostRegular()
 p4 = HistorianPlayer(2)
 
-mg = MultipleGames(p2,p4, 1000)
+mg = MultipleGames(p1,p4, 1000)
 mg.play_turnament()
 
+mg.print_results(p1)
 mg.print_results(p4)
