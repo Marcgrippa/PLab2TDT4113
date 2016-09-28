@@ -1,6 +1,6 @@
 import KryptoHjelpekode
 import random
-
+import math
 
 # Ferdig implimentert
 class Cipher:
@@ -108,9 +108,94 @@ class Receiver(Person):
         self.decoded_text = self.c1.decode(text, key)
         return self.decoded_text
 
-# IKKE ferdig implimentert
-#class Hacker(Person):
+# Ferdig implimentert
+class Hacker(Person):
 
+    def __init__(self, text):
+        self.plain_text = text
+        self.decoded_text = ""
+        self.key = 0
+
+    def operate_cipher(self, cipher):
+        self.cipher = cipher
+
+    def hack(self, cipher_name):
+        most_equals = 0
+
+        if cipher_name == "Caesar":
+            for key in range(0,Cipher.getModulo(self)):
+                c1 = Caesar()
+                translated = c1.decode(self.plain_text, key)
+                equal = self.check_hacking(translated)
+                if equal > most_equals:
+                    most_equals = equal
+                    self.decoded_text = translated
+                    self.key = key
+
+        if cipher_name == "Multiplicative":
+            for key in range(2, 200):
+                if math.gcd(Cipher.getModulo(self), key == 1):
+                    c2 = Multiplicative()
+                    translated = c2.decode(self.plain_text, key)
+                    equal = self.check_hacking(translated)
+                    if equal > most_equals:
+                        most_equals = equal
+                        self.decoded_text = translated
+                        self.key = key
+
+        if cipher_name == "Affine":
+            for key1 in range(2,20):
+                if math.gcd(Cipher.getModulo(self), key1) == 1:
+                    for key2 in range(1, Cipher.getModulo(self)):
+                        c3 = Affine()
+                        translated = c3.decode(self.plain_text, (key1, key2))
+                        equal = self.check_hacking(translated)
+                        if equal > most_equals:
+                            most_equals = equal
+                            self.decoded_text = translated
+                            self.key = key1, key2
+
+        if cipher_name == "Unbreakable":
+            fil = open("English_words.txt", "r")
+            c4 = Unbreakable()
+            for word in fil:
+                key = ''
+                word.strip()
+                for letter in word:
+                    key_number = ord(letter) - 32
+                    if key_number < 32:
+                        key_number += 95
+                    key_letter = Cipher.dictionary[key_number]
+                    key += key_letter
+                translated = c4.decode(self.plain_text, key)
+                equal = self.check_hacking(translated)
+
+                if equal > most_equals:
+                    most_equals = equal
+                    self.decoded_text = translated
+                    self.key = key
+                    print(self.key)
+            fil.close()
+        return self.decoded_text
+
+    def check_hacking(self, text):
+        equals = 0
+        fil = open("English_words.txt", "r")
+        for line in fil:
+            line = line.strip()
+            if line in text:
+                equals += 1
+        fil.close()
+        return equals
+
+    def set_key(self, key ):
+        self.key = key
+
+    def get_key(self):
+        return self.key
+
+    def get_text(self):
+        return self.plain_text
 
 # Ferdig implimentert
 class Caesar(Cipher):
@@ -139,7 +224,7 @@ class Caesar(Cipher):
 
         return self.decoded_text
 
-    # Generer en random nøkkel fra 1 til 10
+    # Generer en random nøkkel mellom 0 og 95
     def generate_keys(self):
         self.key = random.randint(1,Cipher.getModulo(self))
         return self.key
@@ -179,7 +264,7 @@ class Multiplicative(Cipher):
         while True:
             if not KryptoHjelpekode.modular_inverse(self.key, Cipher.getModulo(self)):
                 print("Lager ny nøkkkel... \n")
-                self.key = random.randint(1,999)
+                self.key = random.randint(1,200)
             else:
                 return self.key
 
@@ -191,7 +276,8 @@ class Affine(Cipher):
         self.coded_text = ""
 
     # Krypterer meldingen
-    def encode_with_multi_key(self, text, first_key, second_key):
+    def encode(self, text, key):
+        first_key, second_key = key
         self.plain_text = text
 
         for i in self.plain_text:
@@ -200,36 +286,131 @@ class Affine(Cipher):
         return self.coded_text
 
     # Dekrypterer meldingen
-    def decode_with_multi_key(self, text, first_key, second_key):
+    def decode(self, text, key):
+        first_key, second_key = key
         for i in text:
             c = (((ord(i) - second_key) * first_key) - 32) % Cipher.getModulo(self)
             self.decoded_text += Cipher.dictionary[c]
         return self.decoded_text
 
     def generate_keys(self):
-        self.first_key = random.randint(0,95)
-        self.second_key = random.randint(0,95)
+        # Små tall for å teste raskere, risikerer ikke å måtte itterer over store tall
+        #self.first_key = random.randint(0,Cipher.getModulo(self))
+        #self.second_key = random.randint(0,Cipher.getModulo(self))
+        self.first_key = random.randint(2,10)
+        self.second_key = random.randint(2,10)
 
         while True:
             if not KryptoHjelpekode.modular_inverse(self.first_key, Cipher.getModulo(self)):
                 print("Lager ny nøkkkel... \n")
-                self.first_key = random.randint(1, 999)
+                # Små tall for å teste raskere, risikerer ikke å måtte itterer over store tall
+                self.first_key = random.randint(2, 10)
             else:
                 return self.first_key, self.second_key
 
+# Ferdig implimentert
+class Unbreakable(Cipher):
+
+    def __init__(self):
+        self.cipher_name = "Unbreakable"
+        self.decoded_text = ""
+
+    # Krypterer teksten
+    def encode(self, text, key):
+        self.plain_text = text
+        self.coded_text = ""
+        # Holder styr på hvilken subkey som skal brukes
+        self.key_index = 0
+
+        for i in self.plain_text:
+            c = (ord(i) + ord(key[self.key_index]) - 32) % Cipher.getModulo(self)
+            self.coded_text += Cipher.dictionary[c]
+            self.key_index += 1
+
+            if self.key_index == len(key):
+                self.key_index = 0
+
+        return self.coded_text
+
+    def decode(self, text, key):
+        self.plain_text = text
+        self.coded_text = ""
+        # Holder styr på hvilken subkey som skal brukes
+        self.key_index = 0
+
+        for i in self.plain_text:
+            c = (ord(i) - ord(key[self.key_index]) - 32) % Cipher.getModulo(self)
+            self.coded_text += Cipher.dictionary[c]
+            self.key_index += 1
+
+            if self.key_index == len(key):
+                self.key_index = 0
+
+        return self.coded_text
+
+    def generate_keys(self):
+        self.key = ""
+        # Har kort key lengde pga går kort tid å itterer gjennom
+        self.key_length = random.randint(1,2)
+        for i in range (self.key_length):
+            r = random.randint(0,94)
+            self.key += Cipher.dictionary[r]
+        return "aahi"
+
+# Ferdig implimentert
+class RSA(Cipher):
+
+    def __init__(self):
+        self.cipher_name = "RSA"
+        self.coded_text = 0
+        self.decoded_text = ""
+
+    def encode(self, text, key):
+        # Pakker ut nøkkelen
+        self.n, self.e = key
+
+        # Generer heltallet fra teksten
+        self.heltall = KryptoHjelpekode.blocks_from_text(text,256)
+
+        # Krypterer heltallet
+        for i in self.heltall:
+            self.coded_text += pow(i, self.e, self.n)
+
+        # Returnerer heltallet
+        return self.heltall
+
+    def decode(self, heltall, key):
+        # Pakker ut nøkkelen
+        self.n, self.key = key
+
+        # Dekrypterer koden
+        self.decoded_text = KryptoHjelpekode.text_from_blocks(heltall, 1024)
+
+        #Returnerer koden
+        return self.decoded_text
 
 
 
-# IKKE ferdig implimentert
-#class Unbreakable(Cipher):
 
+    def generate_keys(self):
+        self.validKey = False
+        while self.validKey == False:
 
-# IKKE ferdig implimentert
-#class RSA(Cipher):
+            self.random_bit = random.randint(4,10)
+            self.p = KryptoHjelpekode.generate_random_prime(self.random_bit)
+            self.q = KryptoHjelpekode.generate_random_prime(self.random_bit)
+            self.n = self.p * self.q
+            self.phi = (self.p - 1)*(self.q - 1)
+            self.e = random.randint(3, self.phi - 1)
+            if not(KryptoHjelpekode.modular_inverse(self.e, self.phi)):
+                self.validKey = False
+            else:
+                self.d = KryptoHjelpekode.modular_inverse(self.e, self.phi)
+                self.key = ((self.n, self.e), (self.n, self.d))
+                self.validKey = True
+        return self.key
 
-
-
-# Kjører de forskjellige cipher algoritmene 
+# Kjører de forskjellige cipher algoritmene
 def runCaesar():
     # Initialiserer en sender
     s1 = Sender("abcdefghijklmnopqrstuvwxyz - ABCDEFGHIJKLMNOPQRSTUVWXYZ")
@@ -327,7 +508,7 @@ def runAffine():
     s1.set_key(key)
 
     # Krypterer teksten
-    kode = c1.encode_with_multi_key(s1.get_text(),s1.get_key()[0],s1.get_key()[1])
+    kode = c1.encode(s1.get_text(),s1.get_key())
 
     # Initialiserer en mottaker
     r1 = Receiver()
@@ -341,7 +522,7 @@ def runAffine():
     r1.set_key(key)
 
     # Dekrypterer teksten og printer den ut
-    decoded_text = c1.decode_with_multi_key(kode, r1.get_key()[0], r1.get_key()[1])
+    decoded_text = c1.decode(kode, r1.get_key())
 
     print()
     print(c1.cipher_name)
@@ -352,3 +533,134 @@ def runAffine():
     print("Dekryptert tekst     : " + decoded_text  + "\n")
 
     return decoded_text
+
+def runUnbreakble():
+    # Initialiserer en sender
+    s1 = Sender("abcdefghijklmnopqrstuvwxyz - ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
+    # Velger hvilken krypterinsalgoritme som skal brukes senderen
+    c1 = Unbreakable()
+    s1.operate_cipher(c1)
+
+    # Generer en nøkkel
+    key = c1.generate_keys()
+
+    # Gir nøkkelen til sender
+    s1.set_key(key)
+
+    # Krypterer teksten
+    kode = s1.encode_message(s1.get_text(), s1.get_key())
+
+    # Initialiserer en mottaker
+    r1 = Receiver()
+
+    # Velger krypteringsalgoritme som skal brukes hos mottakeren
+    r1.operate_cipher(c1)
+
+    # Gir nøkkelen til mottaker
+    new_key = ""
+    for i in key:
+        n = ord(i) - 32
+        c = (c1.getModulo() - n) % c1.getModulo()
+        new_key += c1.dictionary[n]
+
+    r1.set_key(new_key)
+
+    # Dekrypterer teksten og printer den ut
+    decoded_text = r1.decode_message(kode, r1.get_key())
+
+    print()
+    print(c1.cipher_name)
+    print("Den orginale teksten : " + s1.get_text())
+    print("Kryptert tekst       : " + kode)
+    print("Nøkkelen             : " + s1.get_key())
+    print("Dekryptert tekst     : " + decoded_text + "\n")
+
+    return (decoded_text)
+
+def runRSA():
+    # Initialiserer en sender
+    s1 = Sender("abcdefghijklmnopqrstuvwxyz - ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
+    # Velger hvilken krypterinsalgoritme som skal brukes senderen
+    c1 = RSA()
+    # s1.operate_cipher(c1)
+    s1.operate_cipher(c1)
+
+    # Generer en nøkkel
+    key = c1.generate_keys()
+
+    # Gir nøkkelen til sender
+    s1.set_key(key[0])
+
+    # Krypterer teksten
+    kode = c1.encode(s1.get_text(),s1.get_key())
+
+    # Initialiserer en mottaker
+    r1 = Receiver()
+
+    # Velger krypteringsalgoritme som skal brukes hos mottakeren
+    r1.operate_cipher(c1)
+
+    # Gir nøkkelen til mottaker
+    r1.set_key(key[1])
+
+    # Dekrypterer teksten og printer den ut
+    decoded_text = c1.decode(kode, r1.get_key())
+
+    print()
+    print(c1.cipher_name)
+    print("Den orginale teksten : " + s1.get_text())
+    print("Kryptert tekst       : " + str(kode))
+    print("Nøkkelen for sender  : " + str(s1.get_key()))
+    print("Nøkkelen for mottaker: " + str(r1.get_key()))
+    print("Dekryptert tekst     : " + decoded_text  + "\n")
+
+    return decoded_text
+
+def runHacker(cipher):
+    # Velger krypteringsalgoritme
+    if cipher == "Caesar":
+        c1 = Caesar()
+    elif cipher == "Multiplicative":
+        c1 = Multiplicative()
+    elif cipher == "Affine":
+        c1 = Affine()
+    elif cipher == "Unbreakable":
+        c1 = Unbreakable()
+    else:
+        return "Feil"
+
+    # Initialiserer en sender
+    s1 = Sender("a")
+
+    # Krypterer ordene med den valgte algoritmen
+    s1.operate_cipher(c1)
+
+    # Generer en nøkkel
+    key = c1.generate_keys()
+
+    # Gir nøkkelen til sender
+    s1.set_key(key)
+
+    # Krypterer teksten
+    kode = s1.encode_message(s1.get_text(), s1.get_key())
+
+    # Initialiserer en Hacker
+    h1 = Hacker(kode)
+
+    # Velger krypteringsalgoritme som skal brukes hos mottakeren
+    h1.operate_cipher(c1)
+
+    # Hacker koden med algoritmen for Caesar
+    decoded_text = h1.hack(str(c1.cipher_name))
+
+    print()
+    print(c1.cipher_name)
+    print("Den orginale teksten : " + s1.get_text())
+    print("Kryptert tekst       : " + kode)
+    print("Nøkkelen             : " + str(s1.get_key()))
+    print("Nøkkelen for hacker  : " + str(h1.get_key()))
+    print("Dekryptert tekst     : " + decoded_text + "\n")
+
+    return (decoded_text)

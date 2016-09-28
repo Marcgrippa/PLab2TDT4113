@@ -44162,7 +44162,7 @@ helmless
 helms
 helmsman
 helmsmen
-helot
+helo
 helotry
 helots
 help
