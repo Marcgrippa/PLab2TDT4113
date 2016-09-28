@@ -5,7 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/English_words.txt" afterPath="$PROJECT_DIR$/English_words.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Krypto.py" afterPath="$PROJECT_DIR$/Krypto.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mainKrypto.py" afterPath="$PROJECT_DIR$/mainKrypto.py" />
     </list>
     <ignored path="PLab2TDT4113.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -19,7 +18,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/PLab2TDT4113$Krypto.coverage" NAME="Krypto Coverage Results" MODIFIED="1474903508456" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PLab2TDT4113$mainKrypto.coverage" NAME="mainKrypto Coverage Results" MODIFIED="1475091789709" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PLab2TDT4113$mainKrypto.coverage" NAME="mainKrypto Coverage Results" MODIFIED="1475093180673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -35,7 +34,7 @@
           <file leaf-file-name="KryptoHjelpekode.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/KryptoHjelpekode.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1120">
+                <state relative-caret-position="408">
                   <caret line="234" column="0" selection-start-line="234" selection-start-column="0" selection-end-line="234" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#16#0" expanded="true" />
@@ -48,27 +47,35 @@
           <file leaf-file-name="Krypto.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Krypto.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="34">
-                  <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+                <state relative-caret-position="213">
+                  <caret line="178" column="33" selection-start-line="178" selection-start-column="33" selection-end-line="178" selection-end-column="33" />
                   <folding>
                     <element signature="e#0#23#0" expanded="true" />
                     <element signature="e#91#1788#0" expanded="false" />
                     <element signature="e#1829#2110#0" expanded="false" />
                     <element signature="e#2159#2876#0" expanded="false" />
                     <element signature="e#2926#3410#0" expanded="false" />
-                    <element signature="e#3459#6444#0" expanded="false" />
-                    <element signature="e#6492#7400#0" expanded="false" />
-                    <element signature="e#7456#8583#0" expanded="false" />
-                    <element signature="e#8631#10097#0" expanded="false" />
-                    <element signature="e#10151#11555#0" expanded="false" />
-                    <element signature="e#13193#14168#0" expanded="false" />
-                    <element signature="e#14199#15349#0" expanded="false" />
-                    <element signature="e#15372#16545#0" expanded="false" />
-                    <element signature="e#16572#17700#0" expanded="false" />
-                    <element signature="e#17720#18773#0" expanded="false" />
-                    <element signature="e#18802#19982#0" expanded="false" />
-                    <marker date="1475091960874" expanded="false" signature="11595:13126" ph="..." />
+                    <element signature="e#6542#7450#0" expanded="false" />
+                    <element signature="e#7506#8633#0" expanded="false" />
+                    <element signature="e#8681#10147#0" expanded="false" />
+                    <element signature="e#10201#11603#0" expanded="false" />
+                    <element signature="e#11649#13176#0" expanded="false" />
+                    <element signature="e#13241#14216#0" expanded="false" />
+                    <element signature="e#14247#15397#0" expanded="false" />
+                    <element signature="e#15420#16593#0" expanded="false" />
+                    <element signature="e#16620#17748#0" expanded="false" />
+                    <element signature="e#17768#18821#0" expanded="false" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="English_words.txt" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/English_words.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="136">
+                  <caret line="8" column="2" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="2" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -80,20 +87,28 @@
           <file leaf-file-name="Krypto.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Krypto.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2439">
-                  <caret line="220" column="0" selection-start-line="220" selection-start-column="0" selection-end-line="223" selection-end-column="0" />
+                <state relative-caret-position="340">
+                  <caret line="202" column="21" selection-start-line="202" selection-start-column="21" selection-end-line="202" selection-end-column="21" />
                   <folding>
                     <element signature="e#0#23#0" expanded="true" />
                     <element signature="e#91#1788#0" expanded="false" />
                     <element signature="e#1829#2110#0" expanded="false" />
+                    <element signature="e#2159#2876#0" expanded="false" />
                     <element signature="e#2926#3410#0" expanded="false" />
-                    <element signature="e#7456#8583#0" expanded="false" />
-                    <element signature="e#13193#14168#0" expanded="false" />
-                    <element signature="e#14199#15349#0" expanded="false" />
-                    <element signature="e#15372#16545#0" expanded="false" />
-                    <element signature="e#16572#17700#0" expanded="false" />
-                    <element signature="e#17720#18773#0" expanded="false" />
-                    <marker date="1475091960874" expanded="true" signature="5810:5936" ph="..." />
+                    <element signature="e#3459#6494#0" expanded="false" />
+                    <element signature="e#6542#7450#0" expanded="false" />
+                    <element signature="e#7506#8633#0" expanded="false" />
+                    <element signature="e#8681#10147#0" expanded="false" />
+                    <element signature="e#10201#11603#0" expanded="false" />
+                    <element signature="e#11649#13176#0" expanded="false" />
+                    <element signature="e#13241#14216#0" expanded="false" />
+                    <element signature="e#14247#15397#0" expanded="false" />
+                    <element signature="e#15420#16593#0" expanded="false" />
+                    <element signature="e#16620#17748#0" expanded="false" />
+                    <element signature="e#17768#18821#0" expanded="false" />
+                    <element signature="e#18850#20054#0" expanded="false" />
+                    <marker date="1475093180657" expanded="true" signature="5331:5975" ph="..." />
+                    <marker date="1475093180657" expanded="true" signature="5849:5975" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -112,15 +127,25 @@
           <file leaf-file-name="Krypto_Maria_Solheim.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Krypto_Maria_Solheim.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="222">
-                  <caret line="457" column="0" selection-start-line="457" selection-start-column="0" selection-end-line="458" selection-end-column="40" />
+                <state relative-caret-position="136">
+                  <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#23#0" expanded="true" />
+                    <element signature="e#183#956#0" expanded="false" />
+                    <element signature="e#1000#10617#0" expanded="false" />
+                    <element signature="e#10690#11047#0" expanded="false" />
+                    <element signature="e#11093#11527#0" expanded="false" />
+                    <element signature="e#11572#11814#0" expanded="false" />
                     <element signature="e#11835#12290#0" expanded="false" />
                     <element signature="e#12319#13078#0" expanded="false" />
                     <element signature="e#13115#14301#0" expanded="false" />
                     <element signature="e#14330#15917#0" expanded="false" />
                     <element signature="e#15951#17102#0" expanded="false" />
+                    <element signature="e#17128#18115#0" expanded="false" />
+                    <element signature="e#18136#18440#0" expanded="false" />
+                    <element signature="e#18469#18751#0" expanded="false" />
+                    <element signature="e#18782#19048#0" expanded="false" />
+                    <element signature="e#19077#21714#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -147,8 +172,8 @@
         <option value="$PROJECT_DIR$/SSP.py" />
         <option value="$PROJECT_DIR$/Krypto-hjelpekode.py" />
         <option value="$PROJECT_DIR$/KryptoHjelpekode.py" />
-        <option value="$PROJECT_DIR$/English_words.txt" />
         <option value="$PROJECT_DIR$/mainKrypto.py" />
+        <option value="$PROJECT_DIR$/English_words.txt" />
         <option value="$PROJECT_DIR$/Krypto.py" />
       </list>
     </option>
@@ -519,7 +544,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08958333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -527,7 +552,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3139535" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3139535" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -568,6 +593,82 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/KryptoHjelpekode.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3978">
+          <caret line="234" column="0" selection-start-line="234" selection-start-column="0" selection-end-line="234" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+            <element signature="e#3980#14751#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/English_words.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Krypto.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="201" column="21" selection-start-line="201" selection-start-column="21" selection-end-line="201" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#91#1788#0" expanded="false" />
+            <element signature="e#1829#2110#0" expanded="false" />
+            <element signature="e#2159#2876#0" expanded="false" />
+            <element signature="e#2926#3410#0" expanded="false" />
+            <element signature="e#6542#7450#0" expanded="false" />
+            <element signature="e#7506#8633#0" expanded="false" />
+            <element signature="e#8681#10147#0" expanded="false" />
+            <element signature="e#10201#11603#0" expanded="false" />
+            <element signature="e#11649#13176#0" expanded="false" />
+            <element signature="e#13241#14216#0" expanded="false" />
+            <element signature="e#14247#15397#0" expanded="false" />
+            <element signature="e#15420#16593#0" expanded="false" />
+            <element signature="e#16620#17748#0" expanded="false" />
+            <element signature="e#17768#18821#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainKrypto.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Krypto_Maria_Solheim.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#183#956#0" expanded="false" />
+            <element signature="e#1000#10617#0" expanded="false" />
+            <element signature="e#10690#11047#0" expanded="false" />
+            <element signature="e#11093#11527#0" expanded="false" />
+            <element signature="e#11572#11814#0" expanded="false" />
+            <element signature="e#11835#12290#0" expanded="false" />
+            <element signature="e#12319#13078#0" expanded="false" />
+            <element signature="e#13115#14301#0" expanded="false" />
+            <element signature="e#14330#15917#0" expanded="false" />
+            <element signature="e#15951#17102#0" expanded="false" />
+            <element signature="e#17128#18115#0" expanded="false" />
+            <element signature="e#18136#18440#0" expanded="false" />
+            <element signature="e#18469#18751#0" expanded="false" />
+            <element signature="e#18782#19048#0" expanded="false" />
+            <element signature="e#19077#21714#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KryptoHjelpekode.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
           <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
           <folding>
@@ -587,18 +688,16 @@
             <element signature="e#1829#2110#0" expanded="false" />
             <element signature="e#2159#2876#0" expanded="false" />
             <element signature="e#2926#3410#0" expanded="false" />
-            <element signature="e#3459#6444#0" expanded="false" />
-            <element signature="e#6492#7400#0" expanded="false" />
-            <element signature="e#7456#8583#0" expanded="false" />
-            <element signature="e#8631#10097#0" expanded="false" />
-            <element signature="e#10151#11555#0" expanded="false" />
-            <element signature="e#13193#14168#0" expanded="false" />
-            <element signature="e#14199#15349#0" expanded="false" />
-            <element signature="e#15372#16545#0" expanded="false" />
-            <element signature="e#16572#17700#0" expanded="false" />
-            <element signature="e#17720#18773#0" expanded="false" />
-            <element signature="e#18802#19982#0" expanded="false" />
-            <marker date="1475091960874" expanded="false" signature="11595:13126" ph="..." />
+            <element signature="e#6542#7450#0" expanded="false" />
+            <element signature="e#7506#8633#0" expanded="false" />
+            <element signature="e#8681#10147#0" expanded="false" />
+            <element signature="e#10201#11603#0" expanded="false" />
+            <element signature="e#11649#13176#0" expanded="false" />
+            <element signature="e#13241#14216#0" expanded="false" />
+            <element signature="e#14247#15397#0" expanded="false" />
+            <element signature="e#15420#16593#0" expanded="false" />
+            <element signature="e#16620#17748#0" expanded="false" />
+            <element signature="e#17768#18821#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -640,18 +739,16 @@
             <element signature="e#1829#2110#0" expanded="false" />
             <element signature="e#2159#2876#0" expanded="false" />
             <element signature="e#2926#3410#0" expanded="false" />
-            <element signature="e#3459#6444#0" expanded="false" />
-            <element signature="e#6492#7400#0" expanded="false" />
-            <element signature="e#7456#8583#0" expanded="false" />
-            <element signature="e#8631#10097#0" expanded="false" />
-            <element signature="e#10151#11555#0" expanded="false" />
-            <element signature="e#13193#14168#0" expanded="false" />
-            <element signature="e#14199#15349#0" expanded="false" />
-            <element signature="e#15372#16545#0" expanded="false" />
-            <element signature="e#16572#17700#0" expanded="false" />
-            <element signature="e#17720#18773#0" expanded="false" />
-            <element signature="e#18802#19982#0" expanded="false" />
-            <marker date="1475091960874" expanded="false" signature="11595:13126" ph="..." />
+            <element signature="e#6542#7450#0" expanded="false" />
+            <element signature="e#7506#8633#0" expanded="false" />
+            <element signature="e#8681#10147#0" expanded="false" />
+            <element signature="e#10201#11603#0" expanded="false" />
+            <element signature="e#11649#13176#0" expanded="false" />
+            <element signature="e#13241#14216#0" expanded="false" />
+            <element signature="e#14247#15397#0" expanded="false" />
+            <element signature="e#15420#16593#0" expanded="false" />
+            <element signature="e#16620#17748#0" expanded="false" />
+            <element signature="e#17768#18821#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -693,18 +790,16 @@
             <element signature="e#1829#2110#0" expanded="false" />
             <element signature="e#2159#2876#0" expanded="false" />
             <element signature="e#2926#3410#0" expanded="false" />
-            <element signature="e#3459#6444#0" expanded="false" />
-            <element signature="e#6492#7400#0" expanded="false" />
-            <element signature="e#7456#8583#0" expanded="false" />
-            <element signature="e#8631#10097#0" expanded="false" />
-            <element signature="e#10151#11555#0" expanded="false" />
-            <element signature="e#13193#14168#0" expanded="false" />
-            <element signature="e#14199#15349#0" expanded="false" />
-            <element signature="e#15372#16545#0" expanded="false" />
-            <element signature="e#16572#17700#0" expanded="false" />
-            <element signature="e#17720#18773#0" expanded="false" />
-            <element signature="e#18802#19982#0" expanded="false" />
-            <marker date="1475091960874" expanded="false" signature="11595:13126" ph="..." />
+            <element signature="e#6542#7450#0" expanded="false" />
+            <element signature="e#7506#8633#0" expanded="false" />
+            <element signature="e#8681#10147#0" expanded="false" />
+            <element signature="e#10201#11603#0" expanded="false" />
+            <element signature="e#11649#13176#0" expanded="false" />
+            <element signature="e#13241#14216#0" expanded="false" />
+            <element signature="e#14247#15397#0" expanded="false" />
+            <element signature="e#15420#16593#0" expanded="false" />
+            <element signature="e#16620#17748#0" expanded="false" />
+            <element signature="e#17768#18821#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -745,18 +840,16 @@
             <element signature="e#1829#2110#0" expanded="false" />
             <element signature="e#2159#2876#0" expanded="false" />
             <element signature="e#2926#3410#0" expanded="false" />
-            <element signature="e#3459#6444#0" expanded="false" />
-            <element signature="e#6492#7400#0" expanded="false" />
-            <element signature="e#7456#8583#0" expanded="false" />
-            <element signature="e#8631#10097#0" expanded="false" />
-            <element signature="e#10151#11555#0" expanded="false" />
-            <element signature="e#13193#14168#0" expanded="false" />
-            <element signature="e#14199#15349#0" expanded="false" />
-            <element signature="e#15372#16545#0" expanded="false" />
-            <element signature="e#16572#17700#0" expanded="false" />
-            <element signature="e#17720#18773#0" expanded="false" />
-            <element signature="e#18802#19982#0" expanded="false" />
-            <marker date="1475091960874" expanded="false" signature="11595:13126" ph="..." />
+            <element signature="e#6542#7450#0" expanded="false" />
+            <element signature="e#7506#8633#0" expanded="false" />
+            <element signature="e#8681#10147#0" expanded="false" />
+            <element signature="e#10201#11603#0" expanded="false" />
+            <element signature="e#11649#13176#0" expanded="false" />
+            <element signature="e#13241#14216#0" expanded="false" />
+            <element signature="e#14247#15397#0" expanded="false" />
+            <element signature="e#15420#16593#0" expanded="false" />
+            <element signature="e#16620#17748#0" expanded="false" />
+            <element signature="e#17768#18821#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -782,18 +875,16 @@
             <element signature="e#1829#2110#0" expanded="false" />
             <element signature="e#2159#2876#0" expanded="false" />
             <element signature="e#2926#3410#0" expanded="false" />
-            <element signature="e#3459#6444#0" expanded="false" />
-            <element signature="e#6492#7400#0" expanded="false" />
-            <element signature="e#7456#8583#0" expanded="false" />
-            <element signature="e#8631#10097#0" expanded="false" />
-            <element signature="e#10151#11555#0" expanded="false" />
-            <element signature="e#13193#14168#0" expanded="false" />
-            <element signature="e#14199#15349#0" expanded="false" />
-            <element signature="e#15372#16545#0" expanded="false" />
-            <element signature="e#16572#17700#0" expanded="false" />
-            <element signature="e#17720#18773#0" expanded="false" />
-            <element signature="e#18802#19982#0" expanded="false" />
-            <marker date="1475091960874" expanded="false" signature="11595:13126" ph="..." />
+            <element signature="e#6542#7450#0" expanded="false" />
+            <element signature="e#7506#8633#0" expanded="false" />
+            <element signature="e#8681#10147#0" expanded="false" />
+            <element signature="e#10201#11603#0" expanded="false" />
+            <element signature="e#11649#13176#0" expanded="false" />
+            <element signature="e#13241#14216#0" expanded="false" />
+            <element signature="e#14247#15397#0" expanded="false" />
+            <element signature="e#15420#16593#0" expanded="false" />
+            <element signature="e#16620#17748#0" expanded="false" />
+            <element signature="e#17768#18821#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -854,25 +945,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/KryptoHjelpekode.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1120">
-          <caret line="234" column="0" selection-start-line="234" selection-start-column="0" selection-end-line="234" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-            <element signature="e#3980#14751#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/English_words.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="44164" column="4" selection-start-line="44164" selection-start-column="4" selection-end-line="44164" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mainKrypto.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -883,41 +955,68 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Krypto_Maria_Solheim.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="457" column="0" selection-start-line="457" selection-start-column="0" selection-end-line="458" selection-end-column="40" />
+        <state relative-caret-position="136">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#183#956#0" expanded="false" />
+            <element signature="e#1000#10617#0" expanded="false" />
+            <element signature="e#10690#11047#0" expanded="false" />
+            <element signature="e#11093#11527#0" expanded="false" />
+            <element signature="e#11572#11814#0" expanded="false" />
             <element signature="e#11835#12290#0" expanded="false" />
             <element signature="e#12319#13078#0" expanded="false" />
             <element signature="e#13115#14301#0" expanded="false" />
             <element signature="e#14330#15917#0" expanded="false" />
             <element signature="e#15951#17102#0" expanded="false" />
+            <element signature="e#17128#18115#0" expanded="false" />
+            <element signature="e#18136#18440#0" expanded="false" />
+            <element signature="e#18469#18751#0" expanded="false" />
+            <element signature="e#18782#19048#0" expanded="false" />
+            <element signature="e#19077#21714#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/English_words.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="2" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KryptoHjelpekode.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="234" column="0" selection-start-line="234" selection-start-column="0" selection-end-line="234" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+            <element signature="e#3980#14751#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Krypto.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+        <state relative-caret-position="213">
+          <caret line="178" column="33" selection-start-line="178" selection-start-column="33" selection-end-line="178" selection-end-column="33" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
             <element signature="e#91#1788#0" expanded="false" />
             <element signature="e#1829#2110#0" expanded="false" />
             <element signature="e#2159#2876#0" expanded="false" />
             <element signature="e#2926#3410#0" expanded="false" />
-            <element signature="e#3459#6444#0" expanded="false" />
-            <element signature="e#6492#7400#0" expanded="false" />
-            <element signature="e#7456#8583#0" expanded="false" />
-            <element signature="e#8631#10097#0" expanded="false" />
-            <element signature="e#10151#11555#0" expanded="false" />
-            <element signature="e#13193#14168#0" expanded="false" />
-            <element signature="e#14199#15349#0" expanded="false" />
-            <element signature="e#15372#16545#0" expanded="false" />
-            <element signature="e#16572#17700#0" expanded="false" />
-            <element signature="e#17720#18773#0" expanded="false" />
-            <element signature="e#18802#19982#0" expanded="false" />
-            <marker date="1475091960874" expanded="false" signature="11595:13126" ph="..." />
+            <element signature="e#6542#7450#0" expanded="false" />
+            <element signature="e#7506#8633#0" expanded="false" />
+            <element signature="e#8681#10147#0" expanded="false" />
+            <element signature="e#10201#11603#0" expanded="false" />
+            <element signature="e#11649#13176#0" expanded="false" />
+            <element signature="e#13241#14216#0" expanded="false" />
+            <element signature="e#14247#15397#0" expanded="false" />
+            <element signature="e#15420#16593#0" expanded="false" />
+            <element signature="e#16620#17748#0" expanded="false" />
+            <element signature="e#17768#18821#0" expanded="false" />
           </folding>
         </state>
       </provider>

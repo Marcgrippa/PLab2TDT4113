@@ -163,10 +163,12 @@ class Hacker(Person):
                 word.strip()
                 for letter in word:
                     key_number = ord(letter) - 32
+                    print(key_number)
                     if key_number < 32:
                         key_number += 95
                     key_letter = Cipher.dictionary[key_number]
                     key += key_letter
+
                 translated = c4.decode(self.plain_text, key)
                 equal = self.check_hacking(translated)
 
@@ -174,7 +176,7 @@ class Hacker(Person):
                     most_equals = equal
                     self.decoded_text = translated
                     self.key = key
-                    print(self.key)
+                    print("Key   " + self.key)
             fil.close()
         return self.decoded_text
 
@@ -355,7 +357,7 @@ class Unbreakable(Cipher):
         for i in range (self.key_length):
             r = random.randint(0,94)
             self.key += Cipher.dictionary[r]
-        return "aahi"
+        return "ab"
 
 # Ferdig implimentert
 class RSA(Cipher):
@@ -632,7 +634,7 @@ def runHacker(cipher):
         return "Feil"
 
     # Initialiserer en sender
-    s1 = Sender("a")
+    s1 = Sender("aahed aahing aardvarks ab")
 
     # Krypterer ordene med den valgte algoritmen
     s1.operate_cipher(c1)
