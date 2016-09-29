@@ -121,7 +121,6 @@ class Hacker(Person):
 
     def hack(self, cipher_name):
         most_equals = 0
-
         if cipher_name == "Caesar":
             for key in range(0,Cipher.getModulo(self)):
                 c1 = Caesar()
@@ -134,8 +133,8 @@ class Hacker(Person):
 
         if cipher_name == "Multiplicative":
             for key in range(2, 200):
+                c2 = Multiplicative()
                 if math.gcd(Cipher.getModulo(self), key == 1):
-                    c2 = Multiplicative()
                     translated = c2.decode(self.plain_text, key)
                     equal = self.check_hacking(translated)
                     if equal > most_equals:
@@ -144,7 +143,9 @@ class Hacker(Person):
                         self.key = key
 
         if cipher_name == "Affine":
-            for key1 in range(2,20):
+            # Bruker en kort range pga mindre å ittere gjennom, korterer tid for å teste hacker klassen
+            # Må da også endre modulo
+            for key1 in range(2,Cipher.getModulo(self)):
                 if math.gcd(Cipher.getModulo(self), key1) == 1:
                     for key2 in range(1, Cipher.getModulo(self)):
                         c3 = Affine()
@@ -157,28 +158,31 @@ class Hacker(Person):
 
         if cipher_name == "Unbreakable":
             fil = open("English_words.txt", "r")
-            c4 = Unbreakable()
-            for word in fil:
+            words = fil.readlines()
+            fil.close()
+
+            for word in words:
                 key = ''
                 word.strip()
+                c4 = Unbreakable()
+                # Finner en ny nøkkel som er basert på et engelesk ord
                 for letter in word:
-                    key_number = ord(letter) - 32
-                    print(key_number)
-                    if key_number < 32:
-                        key_number += 95
-                    key_letter = Cipher.dictionary[key_number]
-                    key += key_letter
+                    n = ord(letter) - 32
+                    if (n < 32):
+                        n += 95
+                    key += c4.dictionary[n]
 
+                # Oversetter teksten basert på den nye nøkkelen
                 translated = c4.decode(self.plain_text, key)
                 equal = self.check_hacking(translated)
 
+                # Tester om den finner flere ord som matcher
                 if equal > most_equals:
                     most_equals = equal
                     self.decoded_text = translated
                     self.key = key
-                    print("Key   " + self.key)
-            fil.close()
         return self.decoded_text
+
 
     def check_hacking(self, text):
         equals = 0
@@ -297,16 +301,17 @@ class Affine(Cipher):
 
     def generate_keys(self):
         # Små tall for å teste raskere, risikerer ikke å måtte itterer over store tall
-        #self.first_key = random.randint(0,Cipher.getModulo(self))
-        #self.second_key = random.randint(0,Cipher.getModulo(self))
-        self.first_key = random.randint(2,10)
-        self.second_key = random.randint(2,10)
+        self.first_key = random.randint(0,Cipher.getModulo(self))
+        self.second_key = random.randint(0,Cipher.getModulo(self))
+        #self.first_key = random.randint(2,10)
+        #self.second_key = random.randint(2,10)
 
         while True:
             if not KryptoHjelpekode.modular_inverse(self.first_key, Cipher.getModulo(self)):
                 print("Lager ny nøkkkel... \n")
                 # Små tall for å teste raskere, risikerer ikke å måtte itterer over store tall
-                self.first_key = random.randint(2, 10)
+                # Kan ha så stort som tall som man ønsker (ish)
+                self.first_key = random.randint(2, Cipher.getModulo(self))
             else:
                 return self.first_key, self.second_key
 
@@ -357,7 +362,8 @@ class Unbreakable(Cipher):
         for i in range (self.key_length):
             r = random.randint(0,94)
             self.key += Cipher.dictionary[r]
-        return "ab"
+        # Bruk et englesk ord når du tester for hacker klassen
+        return self.key
 
 # Ferdig implimentert
 class RSA(Cipher):
@@ -563,7 +569,6 @@ def runUnbreakble():
     new_key = ""
     for i in key:
         n = ord(i) - 32
-        c = (c1.getModulo() - n) % c1.getModulo()
         new_key += c1.dictionary[n]
 
     r1.set_key(new_key)
@@ -634,7 +639,7 @@ def runHacker(cipher):
         return "Feil"
 
     # Initialiserer en sender
-    s1 = Sender("aahed aahing aardvarks ab")
+    s1 = Sender("helo world")
 
     # Krypterer ordene med den valgte algoritmen
     s1.operate_cipher(c1)
@@ -658,7 +663,7 @@ def runHacker(cipher):
     decoded_text = h1.hack(str(c1.cipher_name))
 
     print()
-    print(c1.cipher_name)
+    print("Hacker cipheret " + c1.cipher_name)
     print("Den orginale teksten : " + s1.get_text())
     print("Kryptert tekst       : " + kode)
     print("Nøkkelen             : " + str(s1.get_key()))
