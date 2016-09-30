@@ -8,9 +8,9 @@ for i in range(0,1):
     #c5 = Krypto.runRSA()
 
 
-    #h1 = Krypto.runHacker("Caesar")
-    #h2 = Krypto.runHacker("Multiplicative")
-    h3 = Krypto.runHacker("Affine")
+    h1 = Krypto.runHacker("Caesar")
+    h2 = Krypto.runHacker("Multiplicative")
+    #h3 = Krypto.runHacker("Affine")
     #h4 = Krypto.runHacker("Unbreakable")
 
 
