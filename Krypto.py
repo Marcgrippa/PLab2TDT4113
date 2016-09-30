@@ -144,17 +144,21 @@ class Hacker(Person):
 
         if cipher_name == "Affine":
             # Bruker en kort range pga mindre å ittere gjennom, korterer tid for å teste hacker klassen
-            # Må da også endre modulo
-            for key1 in range(2,Cipher.getModulo(self)):
-                if math.gcd(Cipher.getModulo(self), key1) == 1:
-                    for key2 in range(1, Cipher.getModulo(self)):
-                        c3 = Affine()
-                        translated = c3.decode(self.plain_text, (key1, key2))
-                        equal = self.check_hacking(translated)
-                        if equal > most_equals:
-                            most_equals = equal
-                            self.decoded_text = translated
-                            self.key = key1, key2
+            for key1 in range(2,16):
+                for key2 in range(2,16):
+                    c3 = Affine()
+                    new_key = KryptoHjelpekode.modular_inverse(key1, c3.getModulo())
+                    key = [new_key, key2]
+                    translated = c3.decode(self.plain_text, key)
+                    equal = self.check_hacking(translated)
+
+                    if equal > most_equals:
+                        most_equals = equal
+                        self.decoded_text = translated
+                        self.key = key1, key2
+
+
+
 
         if cipher_name == "Unbreakable":
             fil = open("English_words.txt", "r")
@@ -301,17 +305,15 @@ class Affine(Cipher):
 
     def generate_keys(self):
         # Små tall for å teste raskere, risikerer ikke å måtte itterer over store tall
-        self.first_key = random.randint(0,Cipher.getModulo(self))
-        self.second_key = random.randint(0,Cipher.getModulo(self))
-        #self.first_key = random.randint(2,10)
-        #self.second_key = random.randint(2,10)
+        self.first_key = random.randint(2,16)
+        self.second_key = random.randint(2,16)
 
         while True:
             if not KryptoHjelpekode.modular_inverse(self.first_key, Cipher.getModulo(self)):
                 print("Lager ny nøkkkel... \n")
                 # Små tall for å teste raskere, risikerer ikke å måtte itterer over store tall
                 # Kan ha så stort som tall som man ønsker (ish)
-                self.first_key = random.randint(2, Cipher.getModulo(self))
+                self.first_key = random.randint(2, 16)
             else:
                 return self.first_key, self.second_key
 
@@ -358,7 +360,7 @@ class Unbreakable(Cipher):
     def generate_keys(self):
         self.key = ""
         # Har kort key lengde pga går kort tid å itterer gjennom
-        self.key_length = random.randint(1,2)
+        self.key_length = random.randint(1,5)
         for i in range (self.key_length):
             r = random.randint(0,94)
             self.key += Cipher.dictionary[r]
