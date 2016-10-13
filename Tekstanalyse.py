@@ -4,7 +4,6 @@ import string
 import operator
 import math
 
-
 class WordCollector():
 
 
@@ -135,8 +134,6 @@ class WordCollector():
     def getNumberOfFiles(self):
         return self.numbers_of_files
 
-
-
 class RemoveAndCalculate():
 
     def __init__(self):
@@ -257,7 +254,6 @@ class RemoveAndCalculate():
         Regner ut informasjonsverdien til ordene.
         :return: to lister med de mest populære informasjonsverdiene til positive og negative anmeldelser
         """
-
         stop_words = self.posWords.getStopWords()
 
         # Er to dictionary
@@ -275,7 +271,7 @@ class RemoveAndCalculate():
         mostPopularPositive = RemoveAndCalculate.calculateMostPopularInformativWord(self, infoValuePos)
         mostPopularNegative = RemoveAndCalculate.calculateMostPopularInformativWord(self, infoValueNeg)
 
-        return mostPopularPositive, mostPopularNegative
+        return mostPopularPositive, mostPopularNegative, infoValuePos, infoValueNeg
 
     def removeWordsWithLowePruneFactor(self):
         stop_words = self.posWords.getStopWords()
@@ -294,7 +290,6 @@ class RemoveAndCalculate():
         new_dic, _pruneValue = RemoveAndCalculate.calculatePruneValue(self, total_number_of_word_in_pos_and_neg, files_totalts)
 
         # MÅ nå gå gjennom dictinary og ta ut alle ordene som ikke er i x, fordi de har for lav prune verdi
-
         new_pos_dic = RemoveAndCalculate.removeLowPruneWords(self, positive_words_after_stop_words, new_dic)
         new_neg_dic = RemoveAndCalculate.removeLowPruneWords(self, negative_words_after_stop_words, new_dic)
 
@@ -302,13 +297,7 @@ class RemoveAndCalculate():
         infoValuePos = RemoveAndCalculate.calculateInformationValues(self, new_pos_dic, total_number_of_word_in_pos_and_neg)
         infoValueNeg = RemoveAndCalculate.calculateInformationValues(self, new_neg_dic, total_number_of_word_in_pos_and_neg)
 
-        pop_pos = RemoveAndCalculate.findMostPopularWords(self, infoValuePos, files_totalts)
-        pop_neg = RemoveAndCalculate.findMostPopularWords(self, infoValueNeg, files_totalts)
-
-        printWords(pop_pos)
-        printWords(pop_neg)
-
-        return new_pos_dic, new_neg_dic
+        return infoValuePos, infoValueNeg
 
     # Ferdig implementert
     def findMostPopularWords(self, _words, number_of_files):
@@ -327,7 +316,7 @@ class RemoveAndCalculate():
         return most_popular_words[len(most_popular_words) - 25:]
 
 
-    def godhet(self, _dic):
+    def godhet(self):
         """
 
         :param _complete_dic: inneholder populariteten til ordene, fra ligning 1
@@ -343,8 +332,7 @@ class RemoveAndCalculate():
         p.collectWordFromTextFiles()
         n.collectWordFromTextFiles()
 
-        train_pos = p.getWords()
-        train_neg = n.getWords()
+        train_pos,train_neg = c.removeWordsWithLowePruneFactor()
 
         path1 = "C:/Users/Håvard/GitHub/PLab2TDT4113/data/subset/test/pos"
         path2 = "C:/Users/Håvard/GitHub/PLab2TDT4113/data/subset/test/neg"
@@ -354,6 +342,7 @@ class RemoveAndCalculate():
 
         doc_pos_path2 = []
         doc_neg_path2 = []
+
         for filname in glob.glob(os.path.join(path1, '*.txt')):
             popularitet_pos = 0
             popularitet_neg = 0
@@ -366,11 +355,9 @@ class RemoveAndCalculate():
                 if word in train_pos:
                     popularitet_pos = popularitet_pos + math.log(train_pos[word])
 
-                elif word in train_neg:
+                if word in train_neg:
                     popularitet_neg = popularitet_neg + math.log(train_neg[word])
 
-                else:
-                    popularitet_pos = popularitet_pos + math.log(0.02)
 
             if popularitet_pos > popularitet_neg:
                 doc_pos_path1.append(filname[57::])
@@ -381,19 +368,16 @@ class RemoveAndCalculate():
             popularitet_pos = 0
             popularitet_neg = 0
             # Henter ut ordene fra file x
-            words_in_file = p.readFromFile(filname)
-
-            # Tester om ordene er i train_pos
-
+            words_in_file = n.readFromFile(filname)
             for word in words_in_file:
                 if word in train_pos:
                     popularitet_pos = popularitet_pos + math.log(train_pos[word])
 
-                elif word in train_neg:
+                if word in train_neg:
                     popularitet_neg = popularitet_neg + math.log(train_neg[word])
 
-                else:
-                    popularitet_pos = popularitet_pos + math.log(0.02)
+                if (word in train_pos and word not in train_neg):
+                    popularitet_pos = popularitet_pos + math.log(0.001)
 
             if popularitet_pos >= popularitet_neg:
                 doc_pos_path2.append(filname[57::])
@@ -401,7 +385,6 @@ class RemoveAndCalculate():
                 doc_neg_path2.append(filname[57::])
 
         return doc_pos_path1, doc_neg_path1, doc_pos_path2, doc_neg_path2
-
 
 def printWords(_list):
     """
