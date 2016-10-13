@@ -1,4 +1,5 @@
-import Tekstanalyse
+from Oving4 import Tekstanalyse
+
 
 def printWords(_list):
     """

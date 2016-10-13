@@ -1,6 +1,8 @@
-import KryptoHjelpekode
-import random
 import math
+import random
+
+from Oving3 import KryptoHjelpekode
+
 
 # Ferdig implimentert
 class Cipher:
@@ -380,7 +382,7 @@ class RSA(Cipher):
         self.n, self.e = key
 
         # Generer heltallet fra teksten
-        self.heltall = KryptoHjelpekode.blocks_from_text(text,256)
+        self.heltall = KryptoHjelpekode.blocks_from_text(text, 256)
 
         # Krypterer heltallet
         for i in self.heltall:

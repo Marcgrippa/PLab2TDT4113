@@ -1,4 +1,4 @@
-import Krypto
+from Oving3 import Krypto
 
 for i in range(0,1):
     #c1 = Krypto.runCaesar()
