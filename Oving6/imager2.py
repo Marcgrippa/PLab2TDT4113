@@ -1,7 +1,6 @@
 from PIL import Image
 from PIL import ImageFilter
 from PIL import ImageEnhance
-from PIL import ImageOps
 
 
 class Imager():
@@ -27,7 +26,7 @@ class Imager():
         if self.image.mode != self.mode:
             self.image = self.image.convert(self.mode)
 
-    # Save image to a file.  Only if fid has no extension is the type argument used.  When writing to a JPEG
+    # Save image to a file.  Only if fid has no extension is the type argument used.  When writing to a JPEF
     # file, use the extension JPEG, not JPG, which seems to cause some problems.
     def dump_image(self,fid,type='gif'):
         fname = fid.split('.')
@@ -166,78 +165,35 @@ class Imager():
     def mortun(self,im2,levels=5,scale=0.75):
         return self.tunnel(levels,scale).morph4(im2.tunnel(levels,scale))
 
+### *********** TESTS ************************
 
-    # Lag flere funksjoner som tar i bruk de andre delene av PILLOW
+# Note: the default file paths for these examples are for unix!
 
-    # Kan øke og senke kontrasten på et bilde med en verdi der 0.0 er null kontrast og 1.0 vil gi det samme bilde tilbake.
-    def contrast(self, value):
-        enh = ImageEnhance.Contrast(self.image)
-        self.set_image(enh.enhance(value))
-        return self.image
+def ptest1(fid1='images/kdfinger.jpeg', fid2="images/einstein.jpeg",steps=5,newsize=250):
+    im1 = Imager(fid1); im2 = Imager(fid2)
+    im1 = im1.resize(newsize,newsize); im2 = im2.resize(newsize,newsize)
+    roll = im1.morphroll(im2,steps=steps)
+    roll.display()
+    return roll
 
-    def sharpness(self, value):
-        sha = ImageEnhance.Sharpness(self.image)
-        self.set_image(sha.enhance(value))
-        return self.image
+def ptest2(fid1='images/einstein.jpeg',outfid='images/tunnel.jpeg',levels=3,newsize=250,scale=0.8):
+    im1 = Imager(fid1);
+    im1 = im1.resize(newsize,newsize);
+    im2 = im1.tunnel(levels=levels,scale=scale)
+    im2.display()
+    im2.dump_image(outfid)
+    return im2
 
-    def brightness(self, value):
-        bri = ImageEnhance.Brightness(self.image)
-        self.set_image(bri.enhance(value))
-        return self.image
+def ptest3(fid1='images/kdfinger.jpeg', fid2="images/einstein.jpeg",newsize=250,levels=4,scale=0.75):
+    im1 = Imager(fid1); im2 = Imager(fid2)
+    im1 = im1.resize(newsize,newsize); im2 = im2.resize(newsize,newsize)
+    box = im1.mortun(im2,levels=levels,scale=scale)
+    box.display()
+    return box
 
-    def flip(self):
-        flipimg = ImageOps.flip(self.image)
-        self.set_image(flipimg)
-        return self.image
+def reformat(in_fid, out_ext='jpeg',scalex=1.0,scaley=1.0):
+    base, extension = in_fid.split('.')
+    im = Imager(in_fid)
+    im = im.scale(scalex,scaley)
+    im.dump_image(base,out_ext)
 
-    def mirror(self):
-        mir = ImageOps.mirror(self.image)
-        self.set_image(mir)
-        return self.image
-
-    def invert(self):
-        inv = ImageOps.invert(self.image)
-        self.set_image(inv)
-        return self.image
-
-
-
-
-def main():
-    # Plasseringen til bilder
-    path = "C:/Users/Håvard/Github/PLab2TDT4113/Oving5/images/"
-
-    # 3 bilde objekter
-    path_img1 = path + "arduino.jpeg"
-    img1 = Imager(path_img1)
-
-    path_img2 = path + "einstein.jpeg"
-    img2 = Imager(path_img2)
-
-    path_img3 = path + "kdfinger.jpeg"
-    img3 = Imager(path_img3)
-
-    # Reziser bildene til samme størrelse
-    size = 360
-    img1.resize(size,size)
-    img2.resize(size,size)
-    img3.resize(size,size)
-
-    # Bilde 1, tunnel og invert. Tar å legger flere bilder inni seg og tar å inverterer den negativt.
-    img1 = img1.tunnel(3,0.8)
-    img1.invert()
-    img1.display()
-
-    # Bilde 2
-    img2.mortun(img2, 3, 0.8)
-    img2.flip()
-    img2.brightness(1.5)
-    img2.display()
-
-    # Bilde 3 Foradnrer lysettingen, snur det opp ned og speilvendt.
-    img3.brightness(0.3)
-    img3.mirror()
-    img3.invert()
-    img3.display()
-
-main()

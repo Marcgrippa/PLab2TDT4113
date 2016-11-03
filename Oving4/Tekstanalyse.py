@@ -327,15 +327,15 @@ class RemoveAndCalculate():
         # er i den komplette dic
         c = RemoveAndCalculate()
 
-        p = WordCollector("C:/Users/Håvard/GitHub/PLab2TDT4113/data/subset/train/pos")
-        n = WordCollector("C:/Users/Håvard/GitHub/PLab2TDT4113/data/subset/train/neg")
+        p = WordCollector("C:/Users/Håvard/GitHub/PLab2TDT4113/data/all/train/pos")
+        n = WordCollector("C:/Users/Håvard/GitHub/PLab2TDT4113/data/all/train/neg")
         p.collectWordFromTextFiles()
         n.collectWordFromTextFiles()
 
         train_pos,train_neg = c.removeWordsWithLowePruneFactor()
 
-        path1 = "C:/Users/Håvard/GitHub/PLab2TDT4113/data/subset/test/pos"
-        path2 = "C:/Users/Håvard/GitHub/PLab2TDT4113/data/subset/test/neg"
+        path1 = "C:/Users/Håvard/GitHub/PLab2TDT4113/data/all/test/pos"
+        path2 = "C:/Users/Håvard/GitHub/PLab2TDT4113/data/all/test/neg"
 
         doc_pos_path1 = []
         doc_neg_path1 = []
